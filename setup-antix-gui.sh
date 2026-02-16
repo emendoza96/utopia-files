@@ -44,9 +44,11 @@ sudo apt install xorg icewm xterm rox-filer slim firefox-esr -y
 
 echo "=== 7. Configuring IceWM session ==="
 
-echo "exec icewm-session" > ~/.xsession
-chmod +x ~/.xsession
-echo "exec icewm-session" > ~/.xinitrc
+USER_HOME=$(eval echo ~${SUDO_USER:-$USER})
+
+echo "exec icewm-session" > "$USER_HOME/.xsession"
+chmod +x "$USER_HOME/.xsession"
+echo "exec icewm-session" > "$USER_HOME/.xinitrc"
 
 echo "=== 8. Fixing SLiM login command ==="
 
